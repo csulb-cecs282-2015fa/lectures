@@ -1,44 +1,41 @@
 #include <iostream>
 using namespace std;
 
+// Basics of pointers in C++
+
+void ChangeValue(int);
 void ChangePointer(int *); 
-void ChangeReference(int &); 
 void ChangeTwoPointers(int *, int *);
 
 int main(int argc, char* argv[]) {
-   // basics of pointers in C++
    int x = 5, y = 100; // normal int variables
 
+   // A "pointer" is a special variable that "points" to another variable.
+   // Pointers are initialized by assigning the *address* of another variable of
+   // the same type.
 
-   // a pointer is a special variable that "points" to another variable.
-   // pointers are initialized by assigning the *address* of another variable
 
-   // When DECLARING a variable, & is for reference; * is for pointer
    int *p;
-   // do not need to initialize a pointer, unlike a reference.
+   // p is a variable of type "pointer to int."
+   // The * indicates a pointer variable. Whitespace doesn't matter.
+   // int * p, int* p, int *p -- all the same.
+   // Like all variables, p has a garbage value until it is assigned something.
 
-   // to make a pointer "point" to a variable, set it equal to the address of 
-   // the variable.
-
+   // We assign the addresses of variables to pointers.
    p = &x; // & means "address of"; &x means "address of x". assigning &x to p
            // makes p point to x.
-
-   // WHAT DOES THIS LOOK LIKE ON THE STACK?
-   // remember, a pointer's value in memory is always an address
-
-
-
-
-
-
    
    /*
    To change the VALUE of the thing p points to, we use the * operator on p to
    "de-reference" the pointer. This gives us access to the actual memory that
    it points to. We can then read or write to that memory as usual.
    */
-   *p = 10; // this changes the value of the thing that p points to (which is x)
+   
+   cout << *p << endl; // Read the value of the thing that p points to.
+   *p = 10; // Assign a value to the thing that p points to. 
 
+   // We can declare and initialize a pointer in one line:
+   int *p2 = &x;
    
    // Pointers are type-safe, somewhat: can't assign int* to double*
    // double *cant = &x; // error: cannot convert from 'int *' to 'double *'
@@ -48,6 +45,12 @@ int main(int argc, char* argv[]) {
    // This line DECLARES a pointer and INITIALIZES IT to point to the thing 
    // p points to.
    *otherPointer = 100; // what does this change?
+
+   /* 
+   THIS IS IMPORTANT!
+   When you copy or assign pointer A to pointer B, you are making B point to the
+   same thing that A points to.
+   */
 
    /* 
    MINI QUIZ:
@@ -60,55 +63,49 @@ int main(int argc, char* argv[]) {
    int *e = *a;
    */
 
-
-   /*
-   So a pointer is kind of like a reference variable... in both cases, a change
-   to one variable actually changes another... but with different syntax.
-   */
-   int &refToX = x;
-   int *ptrToX = &x;
-
-   // these two lines do the same exact thing: change the memory for x
-   refToX = 20;
-   *ptrToX = 20; 
-
-   
-   // Pointers, unlike references, can have their "target" changed.
-   refToX = y; // LOGIC ERROR: this assigns a copy of y's value to x's value
-   
-   ptrToX = &y; // this does not change x's value; it makes ptrToX "point to" y
-   *ptrToX = 40; 
+   // Pointers can be made to "point" to something else by assigning them a 
+   // new address.
+   p = &y; // this does not change x's value; it makes p "point to" y
+   *p = 40;  // what actual variable changed?
 
    // What does this output now?
-   cout << "X is: " << refToX << endl;
-   cout << "*ptrToX is: " << *ptrToX << " -- y is: " << y << endl;
-
-
+   cout << "*p is: " << *p << " -- y is: " << y << endl;
 
    /*
-   Pointers can be passed to functions. Like references, this allows the 
-   function to change a parameter so that the caller sees the change.
+   Pointers can be passed to functions. This allows the function to change a 
+   parameter so that the caller sees the change.
+
+   Before passing pointers as arguments, review passing "normal" variables.
    */
-   ChangePointer(ptrToX); 
-   // The address ptrToX points to is copied to the function's parameter...
+   ChangeValue(x); // x has value 100 before this call; what about after?
+                   // That's because variables are passed to functions...
+                   // BY ____________ (fill in the blank).
+
+   /*
+   Because the "value" of a pointer is a memory address, when a pointer is
+   passed by value, the address of the thing it points to is copied to the
+   parameter, creating a pointer that points to the same thing as what the
+   argument points to.
+   */
+   ChangePointer(p); 
+   // The address p points to is copied to the function's parameter...
    // then what?
-   cout << "After function, *ptrToX == " << *ptrToX << endl;
+   cout << "After function, *p == " << *p << endl;
 
    // It is more common to pass &y directly to the function.
    ChangePointer(&y);
-   cout << "After function, y and *ptrToX == " << *ptrToX << " (" << y << ")" 
+   cout << "After function, y and *p == " << *p << " (" << y << ")" 
       << endl;
-
    
    return 0;
 }
 
-void ChangePointer(int *p) {
-   *p = 1000;
+void ChangeValue(int v) {
+   v = 500;
 }
 
-void ChangeReference(int &r) {
-   r = 2000;
+void ChangePointer(int *p) {
+   *p = 1000;
 }
 
 void ChangeTwoPointers(int *p1, int *p2) {

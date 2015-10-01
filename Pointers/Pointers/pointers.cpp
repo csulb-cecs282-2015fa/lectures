@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
    THIS IS IMPORTANT!
    When you copy or assign pointer A to pointer B, you are making B point to the
    same thing that A points to.
-   */
+`   */
 
    /* 
    MINI QUIZ:
@@ -94,8 +94,11 @@ int main(int argc, char* argv[]) {
 
    // It is more common to pass &y directly to the function.
    ChangePointer(&y);
-   cout << "After function, y and *p == " << *p << " (" << y << ")" 
+   cout << "After function, y and *p == " << *p << " (" << y << ")"
       << endl;
+
+   
+   ChangeTwoPointers(&x, &y);
    
    return 0;
 }

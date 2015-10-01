@@ -23,9 +23,7 @@ int main_(int argc, char* argv[]) {
    Time timeObject;
    // I can also declare arrays, pointers, and references to Time objects
    Time timeArray[3];
-   Time &timeRef = timeObject;
    Time *timePtr = &timeObject;
-   // what does this look like on the stack?
 
 
    // you can access each member of an object with the period operator .
@@ -40,7 +38,6 @@ int main_(int argc, char* argv[]) {
 
    // can do the same with the array elements, references, and pointers
    timeArray[0].hour = 10;
-   timeRef.minute = 0; // who does this also affect?
    (*timePtr).second = 50; // * has a lower precedence than ., so you must 
                            // use parentheses for order of operations
 

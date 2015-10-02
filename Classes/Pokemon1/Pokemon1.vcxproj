@@ -81,7 +81,7 @@
     <ClInclude Include="Pokemon.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main-pokemon.cpp" />
     <ClCompile Include="Pokemon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

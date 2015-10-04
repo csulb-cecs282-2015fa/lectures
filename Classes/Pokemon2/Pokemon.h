@@ -27,7 +27,7 @@ public:
 
    // Accessor methods. Since our variables are now private, others need a way
    // to read them.
-   const std::string &GetName();
+   const std::string& GetName();
    int GetNumber(); // why isn't this const int &GetNumber???
 
    int GetHitPoints(); 

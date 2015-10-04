@@ -54,7 +54,8 @@ void Pokemon::SetName(const string &name) {
 }
 
 void Pokemon::SetHitPoints(int hitPoints) {
-   mHitPoints = hitPoints;
+   if (hitPoints >= 0)
+      mHitPoints = hitPoints;
 }
 
 void Pokemon::Speak() {

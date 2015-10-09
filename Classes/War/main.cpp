@@ -12,12 +12,11 @@ int main(int argc, char* argv[]) {
 
    // Build a deck for player 1.
    Deck d1;
-   d1.PrintDeck(); // Prints in standard unshuffled deck order... why?
-   cout << endl << endl;
+   cout << d1 << endl; // Prints in standard unshuffled deck order... why?
 
    // Shuffle and demonstrate that the shuffle worked.
    d1.Shuffle();
-   d1.PrintDeck();
+   cout << d1 << endl;
 
    // Shuffle a deck for player 2.
    Deck d2;
@@ -26,15 +25,10 @@ int main(int argc, char* argv[]) {
 
    cout << endl << endl << "Let's play WAR!" << endl;
    while (d1.GetCount() > 0) {
-      // Let's draw this out on the stack.
       Card c1 = d1.DealOne(), c2 = d2.DealOne();
 
-      // Remember: compare will be negative if c1 < c2; positive if c1 > c2;
-      // or 0 if they are equal.
-      int compare = c1.CompareTo(c2);
-
-      cout << c1.ToString() << " vs. " << c2.ToString() << " ... " <<
-         (compare < 0 ? "Player 2 wins!" : compare > 0 ? "Player 1 wins!" : "Tie!") << endl;
+      cout << c1 << " vs. " << c2 << " ... " <<
+         (c1 == c2 ? "Tie!" : c1 < c2 ? "Player 2 wins!" : "Player 1 wins!") << endl;
 
       char cont;
       cout << "Continue? y/n: ";

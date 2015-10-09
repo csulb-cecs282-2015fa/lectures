@@ -19,23 +19,16 @@ public:
 
    // A constructor taking enough information to set up a Card object.
    Card(char kind, char suit);
-   
-   // Unlike Java, not all C++ objects have a "convert to string" function.
-   // But we can add one manually.
-   std::string ToString() const; // What is with the "const"?
-
-
-   // We can't use < or > to compare Card objects yet, but we do need a way of
-   // deciding which of two cards is "greater". This method will do that.
-   // Given another card, compare "this" card to "other" and return a value 
-   // indicating which is greater and should win the hand.
-   
-   // What's with the "const Card &" parameter?
-   int CompareTo(const Card &other) const;
 
    // Mutators for Kind and Suit.
    void SetKind(char kind);
    void SetSuit(char suit);
-}; // NOTE THE SEMICOLON
+
+   // An operator for printing a card to cout:
+   friend std::ostream& operator<<(std::ostream& lhs, const Card &rhs);
+   // operators for comparing cards.
+   friend bool operator<(const Card &lhs, const Card &rhs);
+   friend bool operator==(const Card &lhs, const Card &rhs);
+};
 
 #endif

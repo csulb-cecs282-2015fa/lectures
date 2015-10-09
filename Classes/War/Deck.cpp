@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <random>
 
-
+using std::ostream;
 using std::default_random_engine;
 using std::uniform_int_distribution;
 using std::random_device;
@@ -60,9 +60,10 @@ void Deck::Shuffle() {
 }
 
 // Print all the cards remaining in the deck's array.
-void Deck::PrintDeck() const {
-   for (int i = 0; i < mCardCount; i++) {
-      std::cout << mCards[i].ToString() << "; ";
+ostream& operator<<(ostream& lhs, const Deck &rhs) {
+   for (int i = 0; i < rhs.mCardCount; i++) {
+      lhs << rhs.mCards[i] << "; ";
    }
-   std::cout << std::endl;
+   lhs << std::endl;
+   return lhs;
 }

@@ -1,6 +1,6 @@
 #ifndef __DECK_H
 #define __DECK_H
-
+#include <iostream>
 #include "Card.h" // need this to use the Card type
 
 /*
@@ -10,8 +10,7 @@ one at a time.
 */
 class Deck {
 private:
-   static const int DECK_SIZE = 52; // Static?
-
+   static const int DECK_SIZE = 52;
 
 
 
@@ -37,7 +36,7 @@ public:
    Card DealOne();
 
    // Prints all the cards in the deck.
-   void PrintDeck() const; 
+   friend std::ostream& operator<<(std::ostream& lhs, const Deck &rhs);
 };
 
 #endif

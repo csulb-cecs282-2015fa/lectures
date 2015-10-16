@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
    How many int variables do I get when I declare x?
    When is x removed from memory?
    Who governs this?
-   These answers together form "static memory management": rules for managing
+   These answers together form "stack memory management": rules for managing
    memory for variables whose demands do not change past compile time.
    */
 

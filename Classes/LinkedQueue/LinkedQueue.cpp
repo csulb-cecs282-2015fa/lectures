@@ -44,7 +44,12 @@ int LinkedQueue::Remove() {
    // mHead points to the next item we want to remove. 
    // Make a copy of the data at the head, then redirect the head.
    int data = mHead->mData;
+   
+   Node *temp = mHead;
    mHead = mHead->mNext;
+   delete temp;
+
+
    // What happens to the old head Node? There is a bug in this code...
    // How do we fix that?
 

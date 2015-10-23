@@ -35,7 +35,7 @@ int mains() {
    LinkedQueue second;
    second.Add(1);
 
-   LinkedQueue copy(second); // make a copy of second
+   LinkedQueue copy = second; // make a copy of second
    copy.Add(2);
    cout << second.Size() << endl; // output: 1
    cout << copy.Size() << endl;   // output: 2

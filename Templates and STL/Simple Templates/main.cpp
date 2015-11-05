@@ -43,8 +43,6 @@ int mains(int argc, char* argv[]) {
    cout << "The median of 8.5, 10.2, and 4.5 is " <<
       MedianTemplate(8.5, 10.2, 4.5) << endl; // what type is T?
 
-//   MedianTemplate(8, 8.5, 10L);
-
 
    // This works even with non-fundamental types.
    Rational r1(2, 3), r2(8, 3), r3(10, 2);

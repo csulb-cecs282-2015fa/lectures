@@ -50,6 +50,19 @@ public:
    void SetDefense(int defense) {
       mDefense = defense;
    }
+
+   // New: attack another Actor.
+   void Attack(Actor *a) {
+      // Remember, a can point to any Actor type. We will use one formula for
+      // attacking regardless of target type.
+
+      // Formula: damage dealt = my attack * (100 / (100 + opponent defense)).
+      int damage = (int)(mAttackDamage * (100.0 / (100 + a->GetDefense())));
+      if (damage > a->GetCurrentHitPoints())
+         a->SetCurrentHitPoints(0);
+      else
+         a->SetCurrentHitPoints(a->GetCurrentHitPoints() - damage);
+   }
 };
 
 #endif

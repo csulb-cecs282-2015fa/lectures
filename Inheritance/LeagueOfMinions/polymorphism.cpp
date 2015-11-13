@@ -8,11 +8,20 @@ using namespace std;
 
 Actor *RandomActor();
 
-int main2() {
+int main() {
    // Polymorphism refers to the ability of a BASE CLASS pointer to point to
    // any object of a class that is DERIVED from the base class.
    Minion melee(250, 250, 50, 0, 23, 100);
    Champion garen(600, 600, 60, 30, 1, "Garen", "The Might of Demacia");
+
+   // Now that Actor has an Attack class, we can make our actors do battle!
+   garen.Attack(&melee);
+   melee.Attack(&garen);
+   cout << "After one attack:" << endl;
+   cout << "Melee: " << melee.GetCurrentHitPoints() << " / " << 
+      melee.GetMaxHitPoints() << " HP" << endl;
+   cout << "Garen: " << garen.GetCurrentHitPoints() << " / " <<
+      garen.GetMaxHitPoints() << " HP" << endl;
 
    Actor *a; // Actor is the base class
    // Polymorphism says I can point a at either melee or garen

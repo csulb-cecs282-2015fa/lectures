@@ -6,7 +6,7 @@ using namespace std;
 
 void PrintStats(Actor *a);
 
-int main() {
+int main2() {
    Minion melee(250, 250, 50, 0, 23, 100);
 
    // Even tough the Minion class itself does not have "GetCurrentHitPoints",
@@ -30,6 +30,8 @@ int main() {
    
    garen.SetCurrentHitPoints(550);
    PrintStats(&garen);
+
+   return 0;
 }
 
 void PrintStats(Actor *a) {

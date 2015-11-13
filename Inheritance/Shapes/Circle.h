@@ -18,15 +18,12 @@ public:
        std::cout << "Construct Circle" << std::endl;
    }
 
-   virtual double GetArea() const {
+   double GetArea() const {
       return M_PI * mRadius * mRadius;
    }
 
    // Space for later.
-   ~Circle() {
-      std::cout << "Destruct Circle" << std::endl;
-   }
-
+   
 
 
 

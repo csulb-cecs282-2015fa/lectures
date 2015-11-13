@@ -22,9 +22,7 @@ public:
    }
 
    // Space for later.
-   ~Rectangle() {
-      std::cout << "Destruct Rectangle" << std::endl;
-   }
+   
 
 
 

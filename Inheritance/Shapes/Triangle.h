@@ -20,10 +20,6 @@ public:
    double GetArea() const {
       return 0.5 * mBase * mHeight;
    }
-
-   virtual ~Triangle() {
-      std::cout << "Destruct Triangle" << std::endl;
-   }
 };
 
 #endif

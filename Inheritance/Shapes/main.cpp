@@ -15,18 +15,11 @@ int main(int argc, char* argv[]) {
    Circle c(0, 0, 5);
    Rectangle r(0, 10, 20, 10);
 
-   Shape *t = new Triangle(0, 0, 10, 20);
-
-   cout << endl << endl;
-
-   delete t;
-
    // We will now print out some information about a Shape object. Since we want
    // to work with all Shape-derived classes, we take a Shape* parameter via the
    // magic of polymorphism.
-   //PrintShape(&c);
-   //PrintShape(&r);
-//   PrintShape(&s);
+   PrintShape(&c);
+   PrintShape(&r);
 }
 
 
@@ -46,7 +39,7 @@ void PrintShape(Shape *s) {
    // will not let me call GetArea, even if we *know* that s points to something
    // that DOES have a GetArea.
 
-   /*
+   
    // First attempt at printing the area: downcasting.
    // Ask the shape for its name, and then down-cast the pointer to an 
    // appropriate type.
@@ -59,7 +52,7 @@ void PrintShape(Shape *s) {
       cout << "; area " << rPtr->GetArea() << endl;
    }
    // What are the weaknesses of this approach?
-   */
+   
 
 
 
@@ -74,7 +67,7 @@ void PrintShape(Shape *s) {
 
 
    // Now I can call GetArea on a Shape pointer!
-   cout << "; area " << s->GetArea() << endl;
+   // cout << "; area " << s->GetArea() << endl;
    // What is the output? Why?
 
 
@@ -88,7 +81,7 @@ void PrintShape(Shape *s) {
 
 
    // 2. Now call GetArea on the Shape pointer. Whose GetArea is called?
-//   cout << "; area " << s->GetArea() << endl;
+   // cout << "; area " << s->GetArea() << endl;
 
 
 

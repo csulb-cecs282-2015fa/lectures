@@ -33,11 +33,7 @@ public:
    }
 
    // We will add things here later.
-   virtual double GetArea() const = 0;
    
-   virtual ~Shape() {
-      std::cout << "Destruct Shape" << std::endl;
-   }
 
 
 
